@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - event
   layers:
   - Default
   - TransparentFX
@@ -42,11 +43,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: map
-    uniqueID: 1813304827
+    uniqueID: 3737671987
     locked: 0
-  - name: map_col
-    uniqueID: 3247182347
+  - name: map_event
+    uniqueID: 629671123
     locked: 0
-  - name: map_chara
-    uniqueID: 2299451769
+  - name: player
+    uniqueID: 4201531017
+    locked: 0
+  - name: ui
+    uniqueID: 2144190847
     locked: 0
