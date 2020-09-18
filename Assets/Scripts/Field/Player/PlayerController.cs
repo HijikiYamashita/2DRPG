@@ -8,17 +8,17 @@ public class PlayerController : MonoBehaviour
     Vector3 moveX = new Vector3(1, 0, 0);
     Vector3 moveY = new Vector3(0, 1, 0);
 
-    public float speed = 2f;
+    [SerializeField] private float speed = 5f;
     Vector3 target;
 
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
 
-    public GameObject eventCol;
+    [SerializeField] private GameObject eventCol;
 
-    [System.NonSerialized] public bool rightMove = true;
-    [System.NonSerialized] public bool leftMove = true;
-    [System.NonSerialized] public bool upMove = true;
-    [System.NonSerialized] public bool downMove = true;
+    bool rightMove = true;
+    bool leftMove = true;
+    bool upMove = true;
+    bool downMove = true;
 
     void Start()
     {
@@ -75,5 +75,39 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         rb.MovePosition(Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime));
+    }
+
+    public void colTrigger(int colNum)
+    {
+        if (colNum == 0)
+        {
+            rightMove = true;
+            leftMove = true;
+            upMove = true;
+            downMove = true;
+        }
+        if (colNum == 99)
+        {
+            rightMove = false;
+            leftMove = false;
+            upMove = false;
+            downMove = false;
+        }
+        if (colNum == 1)
+        {
+            rightMove = false;
+        }
+        if (colNum == 2)
+        {
+            leftMove = false;
+        }
+        if (colNum == 3)
+        {
+            upMove = false;
+        }
+        if (colNum == 4)
+        {
+            downMove = false;
+        }
     }
 }

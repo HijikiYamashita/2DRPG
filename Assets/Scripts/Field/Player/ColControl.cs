@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftCol : MonoBehaviour
+public class ColControl : MonoBehaviour
 {
     public GameObject player;
+    public int colNum;
 
     void Start()
     {
@@ -18,10 +19,13 @@ public class LeftCol : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        player.GetComponent<PlayerController>().leftMove = false;
+        if (col.gameObject.tag == "map" || col.gameObject.tag == "event")
+        {
+            player.GetComponent<PlayerController>().colTrigger(colNum);
+        }
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        player.GetComponent<PlayerController>().leftMove = true;
+        player.GetComponent<PlayerController>().colTrigger(0);
     }
 }

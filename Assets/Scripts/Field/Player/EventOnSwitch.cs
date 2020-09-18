@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EventOnSwitch : MonoBehaviour
 {
+    [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject player;
+
     void Start()
     {
 
@@ -20,8 +23,16 @@ public class EventOnSwitch : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                //イベント処理を書く
+                player.gameObject.GetComponent<PlayerController>().colTrigger(99);
+                UI.SetActive(true);
+                col.gameObject.GetComponent<EventControl>().eventSelect();
             }
         }
+    }
+
+    public void eventEnd()
+    {
+        UI.SetActive(false);
+        player.gameObject.GetComponent<PlayerController>().colTrigger(0);
     }
 }

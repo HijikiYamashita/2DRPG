@@ -20,7 +20,6 @@ public class FieldSoundMaster : MonoBehaviour
     {
         if (as4.isPlaying == false)
         {
-            Debug.Log("ふっは");
             as2.volume = 1;
         }
         if (Input.GetKeyDown(KeyCode.Space))
