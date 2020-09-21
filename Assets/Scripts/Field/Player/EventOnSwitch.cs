@@ -21,11 +21,18 @@ public class EventOnSwitch : MonoBehaviour
     {
         if (col.gameObject.tag == "event")
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) && TextDisplay.wordNum == 999)
             {
                 player.gameObject.GetComponent<PlayerController>().colTrigger(99);
                 UI.SetActive(true);
                 col.gameObject.GetComponent<EventControl>().eventSelect();
+            }
+        }
+        if (col.gameObject.tag == "enemy")
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                player.gameObject.GetComponent<PlayerController>().colTrigger(99);
             }
         }
     }

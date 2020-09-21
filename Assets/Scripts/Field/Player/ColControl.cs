@@ -19,7 +19,7 @@ public class ColControl : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "map" || col.gameObject.tag == "event")
+        if (col.gameObject.tag == "map" || col.gameObject.tag == "event" || col.gameObject.tag == "enemy")
         {
             player.GetComponent<PlayerController>().colTrigger(colNum);
         }

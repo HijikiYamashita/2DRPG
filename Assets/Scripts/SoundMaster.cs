@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SoundMaster : MonoBehaviour
 {
-    public int mapNum;
-
     [SerializeField] private AudioSource bgm_square1;
     [SerializeField] private AudioSource bgm_square2;
     [SerializeField] private AudioSource bgm_triangle;
@@ -24,8 +22,7 @@ public class SoundMaster : MonoBehaviour
         if (se_square2.isPlaying == true)
         {
             bgm_square2.volume = 0;
-        }
-        if (se_square2.isPlaying == false)
+        }else if (se_square2.isPlaying == false)
         {
             bgm_square2.volume = 1;
         }

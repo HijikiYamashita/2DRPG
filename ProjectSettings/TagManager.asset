@@ -6,6 +6,7 @@ TagManager:
   tags:
   - event
   - map
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,12 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 4201531017
+    locked: 0
+  - name: battle_background
+    uniqueID: 3493804123
+    locked: 0
+  - name: battle_enemy
+    uniqueID: 104215319
     locked: 0
   - name: ui
     uniqueID: 2144190847
