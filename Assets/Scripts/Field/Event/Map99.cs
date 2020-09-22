@@ -7,8 +7,9 @@ public class Map99 : MonoBehaviour
     //eventSwitch.gameObject.GetComponent<EventOnSwitch>().eventEnd();
 
     [SerializeField] private GameObject eventSwitch;
-    int publicEventNum;
+    int eventNum;
     int textNum = 0;
+    bool eventTrue = false;
 
     void Start()
     {
@@ -17,50 +18,77 @@ public class Map99 : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(textNum);
-        if (publicEventNum == 1)
+        Debug.Log(eventNum);
+        if (eventTrue == true)
         {
             if (TextDisplay.word.Length == TextDisplay.wordNum)
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (textNum == 1)
+                    if (eventNum == 1)
                     {
-                        TextDisplay.word = new string[] { "\n", "＊", "「", "さ", "し", "す", "せ", "そ", "\n", "\n", "　", "　", "た", "ち", "つ", "て", "と", "！", "\n" };
-                        TextDisplay.wordNum = 0;
-                        textNum++;
-                    }else if (textNum == 2)
+                        if (textNum == 1)
+                        {
+                            TextDisplay.word = new string[] { "\n", "＊", "「", "さ", "し", "す", "せ", "そ", "　", "た", "ち", "つ", "て", "と", "！", "\n" };
+                            TextDisplay.wordNum = 0;
+                            textNum++;
+                        }
+                        else if (textNum == 2)
+                        {
+                            eventEnd();
+                        }
+                    }
+                    if (eventNum == 2)
                     {
-                        wait();
+                        if (textNum == 1)
+                        {
+                            TextDisplay.word = new string[] { "\n", "＊", "「", "ま", "み", "む", "め", "も", "　", "や", "　", "ゆ", "　", "よ", "！", "\n" };
+                            TextDisplay.wordNum = 0;
+                            textNum++;
+                        }
+                        else if (textNum == 2)
+                        {
+                            eventEnd();
+                        }
                     }
                 }
             }
         }
     }
 
-    public void eventStart(int eventNum)
+    public void eventStart(int argEventNum)
     {
-        if (eventNum == 1)
+        eventTrue = true;
+        if (argEventNum == 1)
         {
-            publicEventNum = 1;
-            TextDisplay.word = new string[] { "\n", "＊", "「", "あ", "い", "う", "え", "お", "\n", "\n", "　", "　", "か", "き", "く", "け", "こ", "！", "\n" };
+            textNum = 0;
+            eventNum = 1;
+            TextDisplay.word = new string[] { "\n", "＊", "「", "あ", "い", "う", "え", "お", "　", "か", "き", "く", "け", "こ", "！", "\n" };
             TextDisplay.wordNum = 0;
             textNum++;
         }
-        if (eventNum == 2)
+        if (argEventNum == 2)
         {
-            Debug.Log("イベント2");
-            Invoke("wait", 1);
+            textNum = 0;
+            eventNum = 2;
+            TextDisplay.word = new string[] { "\n", "＊", "「", "な", "に", "ぬ", "ね", "の", "　", "は", "ひ", "ふ", "へ", "ほ", "！", "\n" };
+            TextDisplay.wordNum = 0;
+            textNum++;
         }
 
-        if (eventNum == 3)
+        if (argEventNum == 3)
         {
             Debug.Log("イベント3");
         }
     }
 
-    void wait()
+    void eventEnd()
     {
+        textNum = 0;
+        eventNum = 0;
+        eventTrue = false;
+        TextDisplay.wordNum = 999;
+        TextDisplay.textUI.text = "";
         eventSwitch.gameObject.GetComponent<EventOnSwitch>().eventEnd();
     }
 }

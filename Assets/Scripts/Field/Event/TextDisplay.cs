@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class TextDisplay : MonoBehaviour
 {
     public static string[] word;
-    Text textUI;
+    public static Text textUI;
     public static int wordNum = 999;
-    [SerializeField] float timer;
+    float timer;
     public float speed;
 
     void Start()
